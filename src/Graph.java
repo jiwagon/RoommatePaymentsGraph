@@ -96,7 +96,7 @@ public class Graph {
                     System.out.println(edge.from.roommateName + " owes "
                             + edge.to.roommateName + " $" + amount);
                     // amount should equal to 0.
-                    break;
+                    //break;
                 }
                 // If debt is larger than payment:
                 else if (amount < edge.weight) {
@@ -113,6 +113,7 @@ public class Graph {
                             + edge.to.roommateName + " $0");
                     System.out.println(edge.from.roommateName + "'s remaining balance is "
                             + amount);
+                }
 
                     boolean found1 = false;
                     // Iterate through the edges of the start vertex (Roommate A)
@@ -122,11 +123,13 @@ public class Graph {
                             // If edge (debt) exists between Roommate A and Roommate B, remove it
                             if (amount == edge1.weight) {
                                 amount -= edge1.weight;
-                                start.edges.remove(i);
+                                start.edges.remove(j);
                                 found1 = true;
-                                System.out.println(edge1.from.roommateName + " owes "
-                                        + edge1.to.roommateName + " $" + amount);
                                 // amount should equal to 0.
+                                //j++;
+                                if (amount == 0) {
+                                    break;
+                                }
                             }
                             else if (amount > edge1.weight) {
                                 amount -= edge1.weight;
@@ -136,9 +139,14 @@ public class Graph {
                                 System.out.println(edge1.from.roommateName + "'s remaining balance is "
                                         + amount);
                             }
+                            else if (amount < edge1.weight) {
+                                edge1.weight -= amount;
+                                System.out.println(edge1.from.roommateName + " paid " + amount +
+                                        " but still owes " + edge1.to.roommateName + " $" + edge1.weight);
+                                // edge.weight should equal to the remaining debt
+                            }
                         }
                     }
-                }
             }
             else if (!found) {
                 System.out.println("Edge (Debt) does not exist between " +
