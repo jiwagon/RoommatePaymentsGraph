@@ -108,11 +108,36 @@ public class Graph {
                 // If payment is larger than debt:
                 else if (amount > edge.weight) {
                     amount -= edge.weight;
+                    start.edges.remove(i);
                     System.out.println(edge.from.roommateName + " owes "
                             + edge.to.roommateName + " $0");
                     System.out.println(edge.from.roommateName + "'s remaining balance is "
                             + amount);
-                    // amount should be the extra money that will be paid forward
+
+                    boolean found1 = false;
+                    // Iterate through the edges of the start vertex (Roommate A)
+                    for (int j = 0; j < start.edges.size(); j++) {
+                        Edge edge1 = start.edges.get(j);
+                        if (edge.to.roommateName.equals(roommateB)) {
+                            // If edge (debt) exists between Roommate A and Roommate B, remove it
+                            if (amount == edge1.weight) {
+                                amount -= edge1.weight;
+                                start.edges.remove(i);
+                                found1 = true;
+                                System.out.println(edge1.from.roommateName + " owes "
+                                        + edge1.to.roommateName + " $" + amount);
+                                // amount should equal to 0.
+                            }
+                            else if (amount > edge1.weight) {
+                                amount -= edge1.weight;
+                                start.edges.remove(j);
+                                System.out.println(edge1.from.roommateName + " owes "
+                                        + edge1.to.roommateName + " $0");
+                                System.out.println(edge1.from.roommateName + "'s remaining balance is "
+                                        + amount);
+                            }
+                        }
+                    }
                 }
             }
             else if (!found) {
@@ -134,7 +159,7 @@ public class Graph {
                 stb = stb.append(" owes " + edge.to.roommateName);
                 stb = stb.append(" $" + edge.weight + "]; ");
             }
-            stb.append("\n");
+            //stb.append("\n");
         }
         return stb.toString();
     }
