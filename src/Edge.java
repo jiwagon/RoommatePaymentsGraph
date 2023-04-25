@@ -12,6 +12,6 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "[" + from.name + ", " + to.name + ", " + weight + "]";
+        return "[" + from.roommateName + ", " + to.roommateName + ", " + weight + "]";
     }
 }

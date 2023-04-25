@@ -10,7 +10,7 @@ public class Graph {
 
     public int getIndex(String vertex) {
         for (int i = 0; i < this.roommates.size(); i++) {
-            if (this.roommates.get(i).name == vertex)
+            if (this.roommates.get(i).roommateName == vertex)
                 return i;
         }
         return -1;
@@ -28,7 +28,7 @@ public class Graph {
         return toAdd;
     }
 
-    public void addDistance(String roommateA, String roommateB, double distance) {
+    public void addAmount(String roommateA, String roommateB, double amount) {
         Roommate start;
         Roommate end;
         // check if start vertex exists or not
@@ -49,28 +49,83 @@ public class Graph {
         }
 
         for (int i = 0; i < start.edges.size(); i++) {
-            if (start.edges.get(i).to.name == roommateB) {
+            if (start.edges.get(i).to.roommateName == roommateB) {
                 System.out.println("End Edge (Debt) already exists in Graph");
                 return;
             }
         }
 
         // Add same edge from end to start
-        start.edges.add(new Edge(start, end, distance));
+        start.edges.add(new Edge(start, end, amount));
         // add vertex to startVertex arraylist of edges if edge with endVertex is not existing
-        // add vertex to endVertex arraylist of edges if edge with startVertex is not existing
     }
 
-    // Get the string representation of the graph
+    public void removeAmount(String roommateA, String roommateB, double amount) {
+        Roommate start;
+        Roommate end;
+        // check if start vertex exists or not
+        int startPos = this.getIndex(roommateA);
+        if (startPos < 0) {
+            start = this.addRoommate(roommateA);
+        }
+        else {
+            start = this.roommates.get(startPos);
+        }
+        // check if end vertex exists or not
+        int endPos = this.getIndex(roommateB);
+        if (endPos < 0) {
+            end = this.addRoommate(roommateB);
+        }
+        else {
+            end = this.roommates.get(endPos);
+        }
+        // Add same edge from end to start
+        start.edges.add(new Edge(start, end, amount));
+        // add vertex to startVertex arraylist of edges if edge with endVertex is not existing
+
+        boolean found = false;
+        // Iterate through the edges of the start vertex (Roommate A)
+        for (int i = 0; i < start.edges.size(); i++) {
+            Edge edge = start.edges.get(i);
+            if (edge.to.roommateName.equals(roommateB)) {
+                // If edge (debt) exists between Roommate A and Roommate B, remove it
+                if (amount == edge.weight) {
+                    start.edges.remove(i);
+                    found = true;
+                    break;
+                }
+                // If debt is larger than payment:
+                else if (amount < edge.weight) {
+                    edge.weight -= amount;
+                    System.out.println(edge.from.roommateName + " paid "
+                            + edge.to.roommateName + " " + amount);
+                    System.out.println(edge.from.roommateName + " still owes "
+                            + edge.to.roommateName + " " + edge.weight);
+                }
+                // If payment is larger than debt:
+                else if (amount > edge.weight) {
+                    amount -= edge.weight;
+                    System.out.println(edge.from.roommateName + " paid "
+                            + edge.to.roommateName + " " + amount);
+                }
+            }
+        }
+        if (!found) {
+            System.out.println("Edge (Debt) does not exist between Roommate A and Roommate B");
+        }
+    }
+
+
+// Get the string representation of the graph
     @Override
     public String toString() {
         StringBuilder stb = new StringBuilder();
         for (int i = 0; i < this.roommates.size(); i++) {
             for (Edge edge: this.roommates.get(i).edges) {
-                stb = stb.append("[" + this.roommates.get(i).name);
+                stb = stb.append("[" + this.roommates.get(i).roommateName);
                 //stb = stb.append(", " + edge.from.name);
-                stb = stb.append(", " + edge.to.name);
-                stb = stb.append(", " + edge.weight + "]; ");
+                stb = stb.append(" owes " + edge.to.roommateName);
+                stb = stb.append(" $" + edge.weight + "]; ");
             }
             stb.append("\n");
         }
