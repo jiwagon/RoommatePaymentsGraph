@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9b2c7be-4465-4858-a127-18917f4560e1" name="Changes" comment="functional removeAmount if debt is larger than payment">
+    <list default="true" id="e9b2c7be-4465-4858-a127-18917f4560e1" name="Changes" comment="Successful removeAmount() test cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +59,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GraphTest.removeAmount">
+  <component name="RunManager" selected="JUnit.GraphTest">
     <configuration name="GraphTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="RoommatePaymentsGraph" />
       <option name="PACKAGE_NAME" value="" />
@@ -113,8 +111,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GraphTest.removeAmount" />
         <item itemvalue="JUnit.GraphTest" />
+        <item itemvalue="JUnit.GraphTest.removeAmount" />
         <item itemvalue="JUnit.GraphTest.addAmount" />
         <item itemvalue="JUnit.GraphTest.addRoommate" />
         <item itemvalue="JUnit.GraphTest.testAddAmount" />
@@ -131,7 +129,7 @@
       <updated>1682342292941</updated>
       <workItem from="1682342294293" duration="3927000" />
       <workItem from="1682358422998" duration="6669000" />
-      <workItem from="1682402382789" duration="8472000" />
+      <workItem from="1682402382789" duration="8530000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1682397833403</created>
@@ -154,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682406940011</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Successful removeAmount() test cases">
+      <created>1682410891829</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682410891829</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +180,7 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Fixed edge duplicates" />
     <MESSAGE value="functional removeAmount if debt is larger than payment" />
-    <option name="LAST_COMMIT_MESSAGE" value="functional removeAmount if debt is larger than payment" />
+    <MESSAGE value="Successful removeAmount() test cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Successful removeAmount() test cases" />
   </component>
 </project>
