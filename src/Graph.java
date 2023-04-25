@@ -50,7 +50,6 @@ public class Graph {
 
         for (int i = 0; i < start.edges.size(); i++) {
             if (start.edges.get(i).to.name == roommateB) {
-
                 System.out.println("End Edge (Debt) already exists in Graph");
                 return;
             }

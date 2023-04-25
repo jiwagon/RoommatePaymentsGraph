@@ -52,7 +52,9 @@ class GraphTest {
         assertEquals(600.50, graph.roommates.get(1).edges.get(0).weight);
 
         // Assert that the edge "A" -> "C"
-        graph.addDistance("A", "C", 1100.75);
+        // Current Result: "End Edge (Debt) already exists in Graph"
+        // Should I update or add to the debt amount(weight)?
+        graph.addDistance("A", "C", 100);
         assertEquals("C", graph.roommates.get(0).edges.get(1).to.name);
         assertEquals(800.00, graph.roommates.get(0).edges.get(1).weight);
 
