@@ -23,7 +23,7 @@ public class Graph {
             roommates.add(toAdd);
         }
         else {
-            System.out.println("Roommate" + roommate + " already exists.");
+            System.out.println("Roommate " + roommate + " already exists.");
         }
         return toAdd;
     }
@@ -66,6 +66,8 @@ public class Graph {
         // check if start vertex exists or not
         int startPos = this.getIndex(roommateA);
         if (startPos < 0) {
+            // Q: How do we get rid of this but still initialize start?
+            System.out.println("Start vertex (Roommate with debt) does not exist in Graph.");
             start = this.addRoommate(roommateA);
         }
         else {
@@ -74,14 +76,12 @@ public class Graph {
         // check if end vertex exists or not
         int endPos = this.getIndex(roommateB);
         if (endPos < 0) {
+            System.out.println("End vertex (Roommate owed to) does not exist in Graph.");
             end = this.addRoommate(roommateB);
         }
         else {
             end = this.roommates.get(endPos);
         }
-        // Add same edge from end to start
-        start.edges.add(new Edge(start, end, amount));
-        // add vertex to startVertex arraylist of edges if edge with endVertex is not existing
 
         boolean found = false;
         // Iterate through the edges of the start vertex (Roommate A)
@@ -90,28 +90,35 @@ public class Graph {
             if (edge.to.roommateName.equals(roommateB)) {
                 // If edge (debt) exists between Roommate A and Roommate B, remove it
                 if (amount == edge.weight) {
+                    amount -= edge.weight;
                     start.edges.remove(i);
                     found = true;
+                    System.out.println(edge.from.roommateName + " owes "
+                            + edge.to.roommateName + " $" + amount);
+                    // amount should equal to 0.
                     break;
                 }
                 // If debt is larger than payment:
                 else if (amount < edge.weight) {
                     edge.weight -= amount;
-                    System.out.println(edge.from.roommateName + " paid "
-                            + edge.to.roommateName + " " + amount);
-                    System.out.println(edge.from.roommateName + " still owes "
-                            + edge.to.roommateName + " " + edge.weight);
+                    System.out.println(edge.from.roommateName + " paid " + amount +
+                            " but still owes " + edge.to.roommateName + " $" + edge.weight);
+                    // edge.weight should equal to the remaining debt
                 }
                 // If payment is larger than debt:
                 else if (amount > edge.weight) {
                     amount -= edge.weight;
-                    System.out.println(edge.from.roommateName + " paid "
-                            + edge.to.roommateName + " " + amount);
+                    System.out.println(edge.from.roommateName + " owes "
+                            + edge.to.roommateName + " $0");
+                    System.out.println(edge.from.roommateName + "'s remaining balance is "
+                            + amount);
+                    // amount should be the extra money that will be paid forward
                 }
             }
-        }
-        if (!found) {
-            System.out.println("Edge (Debt) does not exist between Roommate A and Roommate B");
+            else if (!found) {
+                System.out.println("Edge (Debt) does not exist between " +
+                        edge.from.roommateName + " and " + edge.to.roommateName);
+            }
         }
     }
 
