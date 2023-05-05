@@ -79,7 +79,7 @@ public class Graph {
             end = this.roommates.get(endPos);
         }
 
-        boolean found = false;
+        //boolean found = false;
         // Iterate through the edges of the start vertex (Roommate A)
         for (int i = 0; i < start.edges.size(); i++) {
             Edge edge = start.edges.get(i);
@@ -89,7 +89,7 @@ public class Graph {
             }
             while (edge != null) {
                 // If edge (debt) exists between Roommate A and Roommate B
-                if (amount >= edge.weight) {
+                if (amount >= edge.weight && edge.weight != 0) {
                     // If payment is greater than or equal to debt
                     amount -= edge.weight;
                     start.edges.remove(i);
@@ -98,11 +98,16 @@ public class Graph {
                     System.out.println(edge.from.roommateName + "'s remaining balance is "
                             + amount);
                     if (amount == 0) { // If remaining balance is 0, break out of the loop
-                        //found = true;
                         break;
                     } else if (amount > 0) {
-                        //found = false;
-                        edge = start.edges.get(i);
+                        if (start.edges.size() == 0) {
+                            amount = 0;
+                            System.out.println(edge.from.roommateName + "'s debts are all cleared. Remaining balance is returned.");
+                            break;
+                        }
+                        else {
+                            edge = start.edges.get(i);
+                        }
                     }
                 } else if (amount < edge.weight) {
                     edge.weight -= amount;

@@ -69,35 +69,20 @@ class GraphTest {
 
         graph.addAmount("A", "B", 10.25);
         graph.addAmount("A", "C", 20.50);
-        graph.addAmount("A", "D", 19.25);
+        graph.addAmount("A", "D", 10.25);
+
+        System.out.println(graph);
+        graph.removeAmount("A", "B", 50.00);
+        System.out.println(graph);
+
         graph.addAmount("D", "A", 500);
         graph.addAmount("D", "B", 200);
         graph.addAmount("D", "C", 200);
         graph.addAmount("D", "E", 100);
+        graph.addAmount("D", "L", 50.50);
 
-        System.out.println("Original Debts");
-        System.out.println(graph.toString());
-
-        graph.removeAmount("A", "B", 50.00);
+        System.out.println(graph);
         graph.removeAmount("D", "A", 1000.00);
-
-        // Final Graph:
-        // [B owes C $600.5];
-        System.out.println();
-        System.out.println(graph.toString());
-
-        // Test case 1: Remove existing amount between roommates
-        // Expect: Successfully removed amount between A and B - A owes B $0.0
-        //graph.removeAmount("A", "B", 500.25);
-
-        // Test case 2: Remove non-existing amount between roommates
-        // Expect: No edge (debt) exists between B and D
-        // graph.removeAmount("B", "D", 200.00);
-
-        // Test case 3: Remove the remaining debt (Clearing the debt)
-        // Expect: C paid $200.75 but still owes D $500.0
-        //graph.removeAmount("C", "D", 200.75);
-        // Expect: Successfully clear the debt between C & D - C owes D $0.0
-        //graph.removeAmount("C", "D", 500.0);
+        System.out.println(graph);
     }
 }
