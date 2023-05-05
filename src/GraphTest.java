@@ -67,17 +67,18 @@ class GraphTest {
     void removeAmount() {
         Graph graph = new Graph();
 
-        graph.addAmount("A", "B", 500.25);
-        graph.addAmount("B", "C", 600.50);
-        graph.addAmount("C", "D", 700.75);
-        graph.addAmount("D", "A", 600);
+        graph.addAmount("A", "B", 10.25);
+        graph.addAmount("A", "C", 20.50);
+        graph.addAmount("A", "D", 19.25);
+        graph.addAmount("D", "A", 500);
         graph.addAmount("D", "B", 200);
         graph.addAmount("D", "C", 200);
+        graph.addAmount("D", "E", 100);
 
         System.out.println("Original Debts");
         System.out.println(graph.toString());
 
-        graph.removeAmount("A", "B", 500.25);
+        graph.removeAmount("A", "B", 50.00);
         graph.removeAmount("D", "A", 1000.00);
 
         // Final Graph:
