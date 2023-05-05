@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9b2c7be-4465-4858-a127-18917f4560e1" name="Changes" comment="updating balance pay forward function">
+    <list default="true" id="e9b2c7be-4465-4858-a127-18917f4560e1" name="Changes" comment="Debugging for edges iteration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,8 +115,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.GraphTest.removeAmount" />
-        <item itemvalue="JUnit.GraphTest.addAmount" />
         <item itemvalue="JUnit.GraphTest" />
+        <item itemvalue="JUnit.GraphTest.addAmount" />
         <item itemvalue="JUnit.GraphTest.addRoommate" />
         <item itemvalue="JUnit.GraphTest.testAddAmount" />
       </list>
@@ -130,7 +132,9 @@
       <updated>1682342292941</updated>
       <workItem from="1682342294293" duration="3927000" />
       <workItem from="1682358422998" duration="6669000" />
-      <workItem from="1682402382789" duration="17145000" />
+      <workItem from="1682402382789" duration="20597000" />
+      <workItem from="1682711711961" duration="2581000" />
+      <workItem from="1683257013667" duration="1727000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1682397833403</created>
@@ -174,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682451247793</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Debugging for edges iteration">
+      <created>1682452899554</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682452899554</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,17 +209,7 @@
     <MESSAGE value="Successful removeAmount() test cases" />
     <MESSAGE value="minor edits" />
     <MESSAGE value="updating balance pay forward function" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating balance pay forward function" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Graph.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Debugging for edges iteration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Debugging for edges iteration" />
   </component>
 </project>
