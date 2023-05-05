@@ -60,7 +60,7 @@ class GraphTest {
         assertEquals("C", graph.roommates.get(0).edges.get(1).to.roommateName);
         assertEquals(800.00, graph.roommates.get(0).edges.get(1).weight);
 
-        System.out.println(graph.toString());
+        System.out.println(graph);
     }
 
     @Test

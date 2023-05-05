@@ -10,7 +10,7 @@ public class Graph {
 
     public int getIndex(String vertex) {
         for (int i = 0; i < this.roommates.size(); i++) {
-            if (this.roommates.get(i).roommateName == vertex)
+            if (this.roommates.get(i).roommateName.equals(vertex))
                 return i;
         }
         return -1;
@@ -46,7 +46,7 @@ public class Graph {
         }
 
         for (int i = 0; i < start.edges.size(); i++) {
-            if (start.edges.get(i).to.roommateName == roommateB) {
+            if (start.edges.get(i).to.roommateName.equals(roommateB)) {
                 System.out.println("End Edge (Debt) already exists in Graph");
                 return;
             }
@@ -125,9 +125,9 @@ public class Graph {
     @Override
     public String toString() {
         StringBuilder stb = new StringBuilder();
-        for (int i = 0; i < this.roommates.size(); i++) {
-            for (Edge edge: this.roommates.get(i).edges) {
-                stb = stb.append("[" + this.roommates.get(i).roommateName);
+        for (Roommate roommate : this.roommates) {
+            for (Edge edge : roommate.edges) {
+                stb = stb.append("[" + roommate.roommateName);
                 //stb = stb.append(", " + edge.from.name);
                 stb = stb.append(" owes " + edge.to.roommateName);
                 stb = stb.append(" $" + edge.weight + "]; ");

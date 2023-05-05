@@ -11,6 +11,6 @@ public class Roommate {
     public Roommate(String roommateName) {
         this.roommateName = roommateName;
         this.amount = 0.0;
-        this.edges = new ArrayList<Edge>();
+        this.edges = new ArrayList<>();
     }
 }
